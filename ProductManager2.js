@@ -3,10 +3,10 @@ const fs = require('fs');
 class ProductManager{
     constructor(path) {
         this.path = path;
-      }
-
+    }
+    
     async create(data){
-          const { title,description,price, Thumbnail, code, stock } = data
+        const { title,description,price, Thumbnail, code, stock } = data
           if(!title||!description||!price||!Thumbnail||!code||!stock) {
               throw new Error("There are fields that are not complete")
             }
@@ -14,7 +14,7 @@ class ProductManager{
         const Product = await getJsonFromFile(this.path);
         
         const newProduct = {
-            id: 2,
+            id: Date.now(),
             title,
             description,
             price,
@@ -64,6 +64,8 @@ class ProductManager{
         await saveJsonInFile(this.path, products);
         console.log('Usuario actualido con exito 😎');
       }
+
+      
 }
 
 const getJsonFromFile = async (path) => {
@@ -93,8 +95,8 @@ async function test() {
     await productManager.create(data);
     console.log(await productManager.get());
 
-    /*await productManager.update(2, { stock: 80 });
-    console.log(await productManager.get());*/
+    await productManager.update(1696878347063, { stock: 80 });
+    console.log(await productManager.get());
   }
 
   test()
