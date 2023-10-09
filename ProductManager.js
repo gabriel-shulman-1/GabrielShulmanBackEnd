@@ -1,8 +1,10 @@
+const fs = require('fs');
+
 class ProductManager{
 
-    constructor () {
-        this.products = []
-    }
+    constructor(path) {
+        this.path = path;
+      }
 
     getProducts() {
         return this.products
@@ -13,16 +15,9 @@ class ProductManager{
             console.error("There are fields that are not complete")
             return
         }
-
-        const product = this.products.find((e)=>e.code===code)
-
-        if(product){
-            console.log("The code " + code + " exist and the product will not be entered")
-            return
-        }
         
         const newProduct = {
-            id: this.products.length + 1,
+            id: 1,
             title,
             description,
             price,
