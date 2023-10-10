@@ -25,7 +25,7 @@ class ProductManager{
         Product.push(newProduct)
         
         await saveJsonInFile(this.path, Product);
-        console.log('El producto se agrego correctamente 😎');
+        console.log('El producto se agrego correctamente');
         
     }
     
@@ -39,7 +39,7 @@ class ProductManager{
         const position = products.findIndex((u) => u.id === id);
 
         if (position === -1) {
-          throw new Error('Usuario no encontrado 😨');
+          throw new Error('Producto no encontrado');
         }
         if (title) {
             products[position].title = title;
@@ -65,6 +65,20 @@ class ProductManager{
         console.log('Usuario actualido con exito 😎');
       }
 
+    async removeProductById(id){
+        let products = await getJsonFromFile(this.path);
+        let position = products.findIndex((u) => u.id === id);
+
+        if (position !== -1) {
+            products.splice(position, 1);
+            console.log("Producto eliminado")
+            saveJsonInFile(this.path, products);
+            console.log(`Product id ${id} deleted! 😎`)
+        } else {
+              throw new Error('Producto no encontrado');
+          }
+    }
+
       
 }
 
@@ -82,8 +96,8 @@ const saveJsonInFile = (path, data) => {
 
 async function test() {
 
-    const productManager = new ProductManager('./Products.json');
-    const data = {
+    const productManager1 = new ProductManager('./Products.json');
+    const data1 = {
         title: "manzanas",
         description: "frutas",
         price: 2,
@@ -91,12 +105,51 @@ async function test() {
         code: "fruta1",
         stock: 25
     };
+    const data2 = {
+        title: "peras",
+        description: "frutas",
+        price: 2,
+        Thumbnail: "imagen",
+        code: "fruta1",
+        stock: 25
+    };
+    const data3 = {
+        title: "frutillas",
+        description: "frutas",
+        price: 2,
+        Thumbnail: "imagen",
+        code: "fruta1",
+        stock: 25
+    };
+    const data4 = {
+        title: "vacio",
+        description: "carnes",
+        price: 4,
+        Thumbnail: "imagen",
+        code: "fruta1",
+        stock: 25
+    };
+    const data5 = {
+        title: "muslo",
+        description: "carnes",
+        price: 4,
+        Thumbnail: "imagen",
+        code: "fruta1",
+        stock: 25
+    };
 
-    await productManager.create(data);
-    console.log(await productManager.get());
+    //await productManager1.create(data1);
+    //await productManager1.create(data2);
+    //await productManager1.create(data3);
+    //await productManager1.create(data4);
+    //await productManager1.create(data5);
+    //console.log(await productManager1.get());
 
-    await productManager.update(1696878347063, { stock: 80 });
-    console.log(await productManager.get());
+    //await productManager1.update(1696895448695, { price: 10 });
+    //console.log(await productManager1.get());
+
+    await productManager1.removeProductById(1696895739589)
+    console.log(await productManager1.get());
   }
 
   test()
