@@ -27,8 +27,12 @@ app.get('/products/:pid',async (req,res) => {
 
 app.get('/products/', (req, res) => {
     let limit = req.query.limit
-    let productsLimited = productManager.splice(0,limit)
-    res.json(productsLimited)
+    if(!limit){
+        res.json(productManager)
+    } else {
+        let productsLimited = productManager.splice(0,limit)
+        res.json(productsLimited)
+    }
   });
 
 app.listen(8080,()=>{console.log('servidor en linea')})
