@@ -1,6 +1,6 @@
 [
 	{
-		"id": 1696895739580,
+		"id": 1697500439388,
 		"title": "manzanas",
 		"description": "frutas",
 		"price": 2,
@@ -9,7 +9,16 @@
 		"stock": 25
 	},
 	{
-		"id": 1696895739592,
+		"id": 1697500439397,
+		"title": "peras",
+		"description": "frutas",
+		"price": 2,
+		"Thumbnail": "imagen",
+		"code": "fruta1",
+		"stock": 25
+	},
+	{
+		"id": 1697500439399,
 		"title": "frutillas",
 		"description": "frutas",
 		"price": 2,
@@ -18,7 +27,7 @@
 		"stock": 25
 	},
 	{
-		"id": 1696895739594,
+		"id": 1697500439401,
 		"title": "vacio",
 		"description": "carnes",
 		"price": 4,
@@ -27,7 +36,7 @@
 		"stock": 25
 	},
 	{
-		"id": 1696895739596,
+		"id": 1697500439403,
 		"title": "muslo",
 		"description": "carnes",
 		"price": 4,
